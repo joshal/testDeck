@@ -56,6 +56,6 @@ mode        : selfcontained # {standalone, draft}
  * We present a very user-friendly web tool using a Shiny app in R proramming language:
  https://joshal.shinyapps.io/code/
  * The data is predicted using the `mtcars` dataset available in R
-  * We observe that fuel efficincy decreases as the weight of a vehicle increases
+ * We observe that fuel efficincy decreases as the weight of a vehicle increases
 
  
