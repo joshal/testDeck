@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test deck</title>
+  <title>Predicting fuel efficiency from vehicle weight</title>
   <meta charset="utf-8">
-  <meta name="description" content="Test deck">
-  <meta name="author" content="">
+  <meta name="description" content="Predicting fuel efficiency from vehicle weight">
+  <meta name="author" content="Joshal">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -13,7 +13,8 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -32,9 +33,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Test deck</h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>Predicting fuel efficiency from vehicle weight</h1>
+    <h2>Data meets automobile engineering</h2>
+    <p>Joshal<br/>Student, Developing Data Products</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,28 +44,64 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h1>The Problem</h1>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <ul>
+<li><a href="http://www.fueleconomy.gov/">Going green</a> is good, knowing how to go green is better!</li>
+<li>A lot of <a href="http://www.nasa.gov/offices/ipp/centers/dfrc/news_events/SS-Truck-Aerodynamics.html#.U5abm3Wx15Q">research</a> is being carried out to improve fuel economy </li>
+<li>With so many options to choose from, buying a fuel efficient vehicle can be a tough choice</li>
+<li><strong>Question:</strong> Can we predict the miles per gallon of an automobile from it&#39;s weight?</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h1>The Solution: The Data Model</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(1:10, 1:10)
-</code></pre>
+    <ul>
+<li>Historical data on car fuel economy given it&#39;s weight is available</li>
+<li>Sophisticated prediction models can be computed fast given today&#39;s computing power</li>
+<li>We fit a linear prediction model to the given data of car weight and MPG</li>
+<li>The least squares fit to the solution contains the line \(Y = \hat \beta_0 + \hat \beta_1 X\) where,
+\[\hat \beta_1 = Cor(Y, X) \frac{Sd(Y)}{Sd(X)} ~~~ \hat \beta_0 = \bar Y - \hat \beta_1 \bar X\]</li>
+</ul>
 
-<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h1>The interactive tool: A Shiny app</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We have the capacity to predict the MPG (as \(Y\) in the model) from the weight (as \(X\) in the model)</li>
+<li>Imagine a GUI tool which can help a customer know the fuel consumption of a vehicle</li>
+<li>We present a very user-friendly web tool using a Shiny app in R proramming language:
+<a href="https://joshal.shinyapps.io/code/">https://joshal.shinyapps.io/code/</a></li>
+<li>The data is predicted using the <code>mtcars</code> dataset available in R</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Conclusion</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We have addressed a unique and interesting problem of predicting fuel consumption of a vehcile</li>
+<li>We presented a solution by providing an easy-to-use tool built using Shiny</li>
+<li>We observe that fuel efficincy decreases as the weight of a vehicle increases</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -76,14 +113,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='The Problem'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='The Solution: The Data Model'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The interactive tool: A Shiny app'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Conclusion'>
+         4
       </a>
     </li>
   </ul>
@@ -95,8 +144,24 @@
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
