@@ -67,8 +67,40 @@
 <li>Historical data on car fuel economy given it&#39;s weight is available</li>
 <li>Sophisticated prediction models can be computed fast given today&#39;s computing power</li>
 <li>We fit a linear prediction model to the given data of car weight and MPG</li>
-<li>The least squares fit to the solution contains the line \(Y = \hat \beta_0 + \hat \beta_1 X\) where,
-\[\hat \beta_1 = Cor(Y, X) \frac{Sd(Y)}{Sd(X)} ~~~ \hat \beta_0 = \bar Y - \hat \beta_1 \bar X\]</li>
+<li><p>The least squares fit to the solution contains the line \(Y = \hat \beta_0 + \hat \beta_1 X\) where,
+\[\hat \beta_1 = Cor(Y, X) \frac{Sd(Y)}{Sd(X)} ~~~ \hat \beta_0 = \bar Y - \hat \beta_1 \bar X\]</p>
+
+<pre><code class="r">data(mtcars)
+
+mpg &lt;- mtcars$mpg  # Predictor
+weight &lt;- mtcars$wt  # Input
+beta1 &lt;- sd(mpg)/sd(weight) * cor(mpg, weight)
+beta0 &lt;- mean(mpg) - mean(weight) * beta1
+
+# Compute the linear model fit
+fit &lt;- lm(mpg ~ wt, data = mtcars)
+
+summary(fit)
+</code></pre>
+
+<p>Call:
+lm(formula = mpg ~ wt, data = mtcars)</p>
+
+<p>Residuals:
+   Min     1Q Median     3Q    Max 
+-4.543 -2.365 -0.125  1.410  6.873 </p>
+
+<p>Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)<br>
+(Intercept)   37.285      1.878   19.86  &lt; 2e-16 ***</p>
+
+<h2>wt            -5.344      0.559   -9.56  1.3e-10 ***</h2>
+
+<p>Signif. codes:  0 &#39;<em>**&#39; 0.001 &#39;</em><em>&#39; 0.01 &#39;</em>&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</p>
+
+<p>Residual standard error: 3.05 on 30 degrees of freedom
+Multiple R-squared:  0.753, Adjusted R-squared:  0.745 
+F-statistic: 91.4 on 1 and 30 DF,  p-value: 1.29e-10</p></li>
 </ul>
 
   </article>
